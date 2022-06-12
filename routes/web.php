@@ -23,11 +23,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::group(['middleware'=>['web', 'auth']], function(){
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 
 //Unit Route
 Route::get('/addunit', [UnitController::class, 'addUnit'])->name('addUnit');
@@ -42,15 +41,11 @@ Route::post('/supplierPost', [supplierController::class, 'supplierPost'])->name(
 Route::get('/supplier/{id}', [supplierController::class, 'supplier'])->name('supplierEdit');
 Route::post('/supplierPost/{id}', [supplierController::class, 'supplierPost'])->name('supplierPostUpdate');
 
-
-
-
 //Purchase Route
 Route::get('/purchase', [PurchaseController::class, 'purchase'])->name('purchase');
 Route::post('/purchasePost', [PurchaseController::class, 'purchasePost'])->name('purchasePost');
 Route::get('/purchase/{id}', [PurchaseController::class, 'purchase'])->name('purchaseEdit');
 Route::post('/purchasePost/{id}', [PurchaseController::class, 'purchasePost'])->name('purchasePostUpdate');
-
 
 //Purchase Order Route
 Route::get('/purchaseorder', [PurchaseorderController::class, 'purchaseorder'])->name('purchaseorder');
